@@ -1,0 +1,19 @@
+{
+  "name": "eycopia/SimpleAbstractDB",
+  "type": "library",
+  "description": "A Simple Database Layer",
+  "keywords": ["Database","Abstract Layer"],
+  "homepage": "",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jorge L. Copia Silva",
+      "email": "eycopia@gmail.com",
+      "homepage": "http://tiricaya.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.1.0"
+  }
+}
