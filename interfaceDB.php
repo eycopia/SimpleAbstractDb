@@ -67,7 +67,7 @@ interface DB {
      * @param $table
      * @param $params
      * @param $where
-     * @return void
+     * @return int numero de filas afectadas
      */
     function update($table, $params, $where);
 

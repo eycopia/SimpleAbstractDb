@@ -131,7 +131,7 @@ class MysqlDB extends Utilities implements DB{
         }
         $sql .= " ( ". join(',', $campos) . ") VALUES "
              .  " ( " . join(',', $valores) . ")";
-        if($this->debugMode){ print "\n Insertara: $sql \n"; }
+        $this->debug($sql);
         try {
             $this->query($sql);
         }catch(Exception $e){
@@ -141,6 +141,15 @@ class MysqlDB extends Utilities implements DB{
         }
     }
 
+    /**
+     * Realiza una actualizacion, esta funcion no acepta actualizaciones sin where
+     *
+     * @param $table
+     * @param $params
+     * @param $where
+     * @throws Exception
+     * @return int numero de filas afectadas
+     */
     public function update($table, $params, $where){
         if( empty($where) || is_null($where)){
             throw new Exception("Debe ingresar una condicion para actualizar");
@@ -150,7 +159,7 @@ class MysqlDB extends Utilities implements DB{
             array_push($changes, "{$campo} = '{$valor}'");
         }
         $sql = "UPDATE $table SET ". join(',', $changes) ." WHERE $where ";
-        if($this->debugMode){ print "\n nActualiza: $sql \n"; }
+        $this->debug($sql);
         $this->query($sql);
         return $this->con->affected_rows;
     }
