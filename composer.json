@@ -1,5 +1,5 @@
 {
-  "name": "eycopia/SimpleAbstractDB",
+  "name": "eycopia/simple-abstract-db",
   "type": "library",
   "description": "A Simple Database Layer",
   "keywords": ["Database","Abstract Layer"],
