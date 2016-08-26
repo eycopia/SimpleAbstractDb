@@ -26,7 +26,6 @@ class MysqlDBTest extends PHPUnit_Framework_TestCase
         $query = "SELECT * FROM abstract_table";
         $this->db->query($query);
         $data = $this->db->fetch_all();
-        $data2 = $this->db->fetch_all_array();
         $this->assertEquals(2, count($data));
         $this->assertEquals('juan', $data[0]->name);
     }
