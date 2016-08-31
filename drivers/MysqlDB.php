@@ -15,6 +15,30 @@ class MysqlDB extends Utilities implements DB{
     private $result;
 
     /**
+     * Nombre de la base de datos
+     * @var string
+     */
+    private $db;
+
+    /**
+     * Nombre de la base de datos
+     * @var string
+     */
+    private $pass;
+
+    /**
+     * Nombre de la base de datos
+     * @var string
+     */
+    private $user;
+
+    /**
+     * Nombre de la base de datos
+     * @var string
+     */
+    private $host;
+
+    /**
      * MysqlDB constructor.
      *
      * @param      $host
@@ -24,13 +48,28 @@ class MysqlDB extends Utilities implements DB{
      * @param bool $debug
      */
     public function __construct($host, $user, $pass, $db, $debug=false){
+        $this->debugMode = $debug;
+        $this->host = $host;
+        $this->user = $user;
+        $this->pass = $pass;
+        $this->db = $db;
+        $this->connect();
+    }
+
+    /**
+     * Realiza la conexion con la base de datos
+     *
+     * @return \void
+     * @throws \Exception
+     */
+    public function connect(){
         try{
-            $this->debugMode = $debug;
-            $this->con = new mysqli($host, $user, $pass, $db);
+            $this->con = new mysqli($this->host, $this->user, $this->pass, $this->db);
             $this->con->set_charset("utf8");
-        }catch (Execption $e){
-           print "Error al conectar con la base de datos: $e";
-           exit;
+        }catch (Exception $e){
+            throw new Exception("Error al conectar db, Host: {$this->host}, "
+                . "User: {$this->user}, Database: {$this->db}, Error: "
+                . $e->getMessage());
         }
     }
 

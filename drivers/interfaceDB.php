@@ -3,6 +3,13 @@
 interface DB {
 
     /**
+     * Realiza la conexion con la base de datos
+     * @throws Cuando no se puede conectar la base de datos
+     * @return void
+     */
+    function connect();
+
+    /**
      * Ingresa el query a procesar
      * @param  string
      * @throws \Exception cuando no se encuentra el registro

@@ -1,5 +1,6 @@
 <?php
-require_once dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "OracleDB.php";
+$slash = DIRECTORY_SEPARATOR;
+require_once dirname(dirname(__FILE__)) . $slash . 'drivers' . $slash. "OracleDB.php";
 
 class OracleDBTest extends PHPUnit_Framework_TestCase
 {

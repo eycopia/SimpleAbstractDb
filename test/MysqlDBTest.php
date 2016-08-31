@@ -1,5 +1,7 @@
 <?php
-require_once dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "MysqlDB.php";
+$slash = DIRECTORY_SEPARATOR;
+require_once dirname(dirname(__FILE__)) . $slash . 'drivers'. $slash  . "MysqlDB.php";
+
 
 class MysqlDBTest extends PHPUnit_Framework_TestCase
 {

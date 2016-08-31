@@ -7,14 +7,50 @@ class OracleDB extends Utilities implements DB{
     private $result;
     protected  $debugMode;
 
+    /**
+     * Nombre de la base de datos
+     * @var string
+     */
+    private $db;
+
+    /**
+     * Nombre de la base de datos
+     * @var string
+     */
+    private $pass;
+
+    /**
+     * Nombre de la base de datos
+     * @var string
+     */
+    private $user;
+
+
     public function __construct($user, $pass, $db, $debug=false){
-        $this->con = oci_connect($user, $pass, $db, 'AL32UTF8');
+
         $this->debugMode = $debug;
+        $this->user = $user;
+        $this->pass = $pass;
+        $this->db = $db;
+        $this->connect();
+    }
+
+    /**
+     * Realiza la conexion con la base de datos
+     *
+     * @return \void
+     * @throws \Exception
+     */
+    public function connect(){
+        $this->con = oci_connect($this->user, $this->pass, $this->db, 'AL32UTF8');
         if( !$this->con){
             $e = oci_error();
-            echo "Un Error de oracle "; print_r(oci_error());
-            exit;
+            throw new Exception("Error al conectar db; "
+                . "User: {$this->user}, Database: {$this->db}, Error: "
+                . $e);
+
         }
+
     }
 
     /**
