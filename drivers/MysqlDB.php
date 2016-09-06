@@ -161,7 +161,7 @@ class MysqlDB extends Utilities implements DB{
      * @return  void
      */
     public function insert($table, $params){
-        $sql = " INSERT INTO `{$table}` ";
+        $sql = " INSERT INTO {$table} ";
         $campos = array();
         $valores = array();
         foreach ($params as $campo => $valor) {
