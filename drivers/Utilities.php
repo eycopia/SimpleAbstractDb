@@ -57,7 +57,7 @@ class Utilities
      * @param  array $params los campos de la tabla
      */
     public function open_multiple($table, $params){
-        $this->sqlMultipleInsert = " INSERT IGNORE INTO `{$table}` ";
+        $this->sqlMultipleInsert = " INSERT IGNORE INTO {$table} ";
         $campos = array();
         foreach ($params as $campo => $valor) {
             array_push($campos, "`{$campo}`");
