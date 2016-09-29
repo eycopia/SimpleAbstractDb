@@ -63,13 +63,13 @@ class MysqlDB extends Utilities implements DB{
      * @throws \Exception
      */
     public function connect(){
-        try{
-            $this->con = new mysqli($this->host, $this->user, $this->pass, $this->db);
-            $this->con->set_charset("utf8");
-        }catch (Exception $e){
+        $this->con = new mysqli($this->host, $this->user, $this->pass, $this->db);
+        if($this->con->connect_errno){
             throw new Exception("Error al conectar db, Host: {$this->host}, "
-                . "User: {$this->user}, Database: {$this->db}, Error: "
-                . $e->getMessage());
+                . "User: {$this->user}, Database: {$this->db}, "
+                . "Errno:  {$this->con->connect_errno}");
+        }else{
+            $this->con->set_charset("utf8");
         }
     }
 
