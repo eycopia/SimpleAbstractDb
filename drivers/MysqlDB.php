@@ -166,7 +166,7 @@ class MysqlDB extends Utilities implements DB{
         $valores = array();
         foreach ($params as $campo => $valor) {
             array_push($campos, "`{$campo}`");
-            array_push($valores, "'{$valor}'");
+            array_push($valores, '"'.$valor.'"');
         }
         $sql .= " ( ". join(',', $campos) . ") VALUES "
              .  " ( " . join(',', $valores) . ")";
