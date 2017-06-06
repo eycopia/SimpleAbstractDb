@@ -15,10 +15,19 @@ class Utilities
     private $sqlMultipleInsert = "";
 
     /**
+     * Cantidad de registros a insertar
+     * @var int
+     */
+    private $numberRecords = 500;
+    /**
      * Volores a insertar en una insercion multiple
      * @var array
      */
     private $values = array();
+
+    public function setRecordsToInsert($number){
+        $this->numberRecords = $number;
+    }
 
     /**
      * Construye un query que agrupa 100 sentencias Insert
@@ -43,7 +52,7 @@ class Utilities
             }
         }
         array_push($this->values, " ( " . join(',', $valores) . ") ");
-        if($total == 100){
+        if($total == $this->numberRecords){
             $this->sqlMultipleInsert .= join(',', $this->values);
             $this->query($this->sqlMultipleInsert);
             $this->sqlMultipleInsert = '';
