@@ -167,7 +167,7 @@ class OdbcDB extends Utilities implements DB
         $campos = array();
         $valores = array();
         foreach ($params as $campo => $valor) {
-            array_push($campos, "`{$campo}`");
+            array_push($campos, "{$campo}");
             array_push($valores, '"' . $valor . '"');
         }
         $sql .= " ( " . join(',', $campos) . ") VALUES "
