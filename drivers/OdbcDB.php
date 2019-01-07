@@ -203,7 +203,7 @@ class OdbcDB extends Utilities implements DB
         $sql = "UPDATE $table SET " . join(',', $changes) . " WHERE $where ";
         $this->debug($sql);
         $this->query($sql);
-        return $this->con->affected_rows;
+        return odbc_num_rows($this->result);
     }
 
     public function close()
